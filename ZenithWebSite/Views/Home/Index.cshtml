@@ -1,31 +1,135 @@
-﻿@{
+﻿@model ZenithWebSite.Models.ViewModel
+@{
     ViewBag.Title = "Home Page";
 }
+<style>
+    table {
+        border: 1px solid black;
+    }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
+    table td {
+        border: 1px solid black;
+    }
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>
+    th {
+        text-align: center;
+        background-color: aquamarine;
+    }
+
+    .time {
+        width:170px;
+    }
+
+    .desc {
+        width:250px;
+    }
+</style>
+<h1>This Week's Events</h1>
+<table>
+    <!-- This checks if there are events for that day -->
+    @if (Model.MonEvents.Any())
+    {
+        <tr>
+            <th colspan="2">@Model.Dates.ToList()[0].ToString("dddd, MMMM dd yyyy")</th>
+        </tr>
+    }
+    <!-- Display each event for that day -->
+    @foreach (var item2 in Model.MonEvents)
+    {
+        <tr>
+            <td class="time">@item2.eventFrom.ToString("h:mm tt") - @item2.eventTo.ToString("h:mm tt")</td>
+            <td class="desc">@item2.Activity.description</td>
+        </tr>
+    }
+
+    @if (Model.TuesEvents.Any())
+    {
+        <tr>
+            <th colspan="2">@Model.Dates.ToList()[1].ToString("dddd, MMMM dd yyyy")</th>
+        </tr>
+    }
+
+    @foreach (var item2 in Model.TuesEvents)
+    {
+        <tr>
+            <td class="time">@item2.eventFrom.ToString("h:mm tt") - @item2.eventTo.ToString("h:mm tt")</td>
+            <td class="desc">@item2.Activity.description</td>
+        </tr>
+    }
+
+    @if (Model.WedsEvents.Any())
+    {
+        <tr>
+            <th colspan="2">@Model.Dates.ToList()[2].ToString("dddd, MMMM dd yyyy")</th>
+        </tr>
+    }
+
+    @foreach (var item2 in Model.WedsEvents)
+    {
+        <tr>
+            <td class="time">@item2.eventFrom.ToString("h:mm tt") - @item2.eventTo.ToString("h:mm tt")</td>
+            <td class="desc">@item2.Activity.description</td>
+        </tr>
+    }
+
+    @if (Model.ThursEvents.Any())
+    {
+        <tr>
+            <th colspan="2">@Model.Dates.ToList()[3].ToString("dddd, MMMM dd yyyy")</th>
+        </tr>
+    }
+
+    @foreach (var item2 in Model.ThursEvents)
+    {
+        <tr>
+            <td class="time">@item2.eventFrom.ToString("h:mm tt") - @item2.eventTo.ToString("h:mm tt")</td>
+            <td class="desc">@item2.Activity.description</td>
+        </tr>
+    }
+
+    @if (Model.FriEvents.Any())
+    {
+        <tr>
+            <th colspan="2">@Model.Dates.ToList()[4].ToString("dddd, MMMM dd yyyy")</th>
+        </tr>
+    }
+
+    @foreach (var item2 in Model.FriEvents)
+    {
+        <tr>
+            <td class="time">@item2.eventFrom.ToString("h:mm tt") - @item2.eventTo.ToString("h:mm tt")</td>
+            <td class="desc">@item2.Activity.description</td>
+        </tr>
+    }
+
+    @if (Model.SatEvents.Any())
+    {
+        <tr>
+            <th colspan="2">@Model.Dates.ToList()[5].ToString("dddd, MMMM dd yyyy")</th>
+        </tr>
+    }
+
+    @foreach (var item2 in Model.SatEvents)
+    {
+        <tr>
+            <td class="time">@item2.eventFrom.ToString("h:mm tt") - @item2.eventTo.ToString("h:mm tt")</td>
+            <td class="desc">@item2.Activity.description</td>
+        </tr>
+    }
+
+    @if (Model.SunEvents.Any())
+    {
+        <tr>
+            <th colspan="2">@Model.Dates.ToList()[6].ToString("dddd, MMMM dd yyyy")</th>
+        </tr>
+    }
+
+    @foreach (var item2 in Model.SunEvents)
+    {
+        <tr>
+            <td class="time">@item2.eventFrom.ToString("h:mm tt") - @item2.eventTo.ToString("h:mm tt")</td>
+            <td class="desc">@item2.Activity.description</td>
+        </tr>
+    }
+
+</table>

@@ -9,10 +9,9 @@ namespace ZenithWebSite.Models.Entity
 {
     public class Activity
     {
-
-        
         [Key]
         public int activityId { get; set; }
+        [Display(Name ="Description")]
         public string description { get; set; }
         [Display(Name = "Create Time")]
         public DateTime createActivity { get; set; }
